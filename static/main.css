@@ -1,0 +1,76 @@
+.header nav{
+    height: 70px;
+    display: inline;
+}
+
+.header img{
+    margin-top: 6px;
+    height: 40px;
+    width: 40px;
+}
+
+.header a{
+    padding-top: 8px;
+    margin-left: 10px;
+    text-decoration: none;
+    font-size: 17pt;
+    position: absolute;
+}
+
+.header .create-link{
+    position: absolute;
+    left: 50%;
+}
+
+.header span{
+    color: rgb(43, 174, 226);
+}
+
+.content{
+    text-align: center;
+    margin-top: 100px;
+}
+
+.content a{
+    text-decoration: none;
+    margin: 4px 6px;
+}
+
+.popular-con span{
+    font-size: 9pt;
+    position: absolute;
+    background-color: rgb(211, 83, 83);
+}
+
+.card-root{
+    display: inline-block;
+    margin: 10px auto;
+}
+
+.card{
+    margin: 5px;
+}
+
+.card-body{
+    background-color: rgb(127, 214, 255);
+}
+
+.card img{
+    width: 180px;
+}
+
+.new-arrive{
+    margin-left: 100px;
+    display: inline;
+}
+
+.new-arrive span{
+    font-size: 8pt;
+    position: absolute;
+}
+
+button{
+    position: absolute;
+    left: 45%;
+    
+}

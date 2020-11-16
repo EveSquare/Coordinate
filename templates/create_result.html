@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css')}}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="from.css">
+    <title>確認</title>
+</head>
+<body>
+    <div class="header">
+        <nav class="navbar fixed-top navbar-dark bg-dark">
+            <img src="../static/Logo-icon.png" alt="Logo">
+            <a href="#">C<span class="logo-title">oo</span>rdinate</a>
+            <a href="/create" class="create-link">+</a> 
+        </nav>
+    </div>
+    <main>
+        <div>
+            <h1>タイトル{{ title }}</h1>
+            <h1>{{ body }}</h1>
+            <h1>{{ body_c}}</h1>
+            <button><a href="/">トップに戻る</a></button>
+            <button><a href="/{{ id }}"></a></button>
+        </div>
+
+    </main>
+</body>
+</html>

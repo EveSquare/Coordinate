@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='from.css')}}">
+    <link rel="stylesheet" href="from.css">
+    <title>作成画面</title>
+</head>
+<body>
+    <div class="header">
+        <nav class="navbar fixed-top navbar-dark bg-dark">
+            <img src="{{ url_for('static', filename='Logo-icon.png')}}" alt="Logo">
+            <a href="/">C<span class="logo-title">oo</span>rdinate</a>
+        </nav>
+    </div>
+    <main>
+        
+        <h1 class="create-window">作成画面</h1>
+        <form action="/create_result" method="POST">
+            <p class="title-block">
+                <label for="title">タイトル</label>
+                <input type="text" id="title" name="title">
+            </p>
+            <div class="img-canvas">
+                <div class="target">
+                    <p>
+                        <a href="" id="target-link"><img src="{{ url_for('static', filename='01_default.png')}}" class="target-img" id="target"></a> 
+                    </p>
+                </div>
+            </div>
+            <fieldset id="human">
+                <div class="origin-from">
+                    <label for="body">body</label>
+                    <input type="button" value="+" onclick="btnclick('body')">
+                    <input type="text" id="body" name="body">
+                </div>
+                <div class="comments-form">
+                    <input type="text" id="body_c" name="body_c" placeholder="comment">
+                </div>
+            </fieldset>
+            <div class="buttons">
+                <button type="reset" class="btn btn-outline-primary" id="buttons-reset"><a href="/">キャンセル</a></button>
+                <button type="submit" class="btn btn-primary btn-lg" id="buttons-submit">確定</button>
+            </div>
+        </form>
+    </main>
+    <script>
+        document.getElementById('body').style.visibility = 'hidden';
+
+        function btnclick(name){
+            const elem = document.getElementById(name);
+
+	        if(elem.style.visibility=="visible"){
+	        	// hiddenで非表示
+	        	elem.style.visibility ="hidden";
+	        }else{
+	        	// visibleで表示
+	        	elem.style.visibility ="visible";
+	        }
+        };
+
+        // ---<<<img>>>---
+        var x = 0;
+        var y = 0;
+        var img_list = new Array('01_default.png','02_hairaccessory.png','03_tops.png','04_bag.png','05_bottoms.png','06_shoes.png');
+        path = '../static/img/'
+        document.getElementById("target").addEventListener( "mousemove", function( event ) {
+    	    var clickX = event.pageX ;
+    	    var clickY = event.pageY ;
+
+    	    // 要素の位置を取得
+    	    var clientRect = this.getBoundingClientRect() ;
+    	    var positionX = clientRect.left + window.pageXOffset ;
+    	    var positionY = clientRect.top + window.pageYOffset ;
+
+    	    // 要素内におけるクリック位置を計算
+    	    x = clickX - positionX ;
+    	    y = clickY - positionY ;
+            //console.log('x:'+x+'y:'+y);
+
+            if((200 <= x && x < 275)&&(66 <= y && y < 141)){
+                document.getElementById('target').src = "{{ url_for('static', filename='02_hairaccessory.png')}}";
+                //02_hairaccessory
+                document.getElementById('target-link').href = '#hairaccessory';
+            }
+            else if((123 <= x && x < 336) && (170 <= y && y < 300)){
+                document.getElementById('target').src = "{{ url_for('static', filename='03_tops.png')}}";
+                //03_tops
+                document.getElementById('target-link').href = '#body';
+            }
+            else if(((65 <= x && x < 122)&&(304 <= y && y <  321) || (342 <= x && x < 384)&&(301 <= y && y < 319))){
+                document.getElementById('target').src = "{{ url_for('static', filename='04_bag.png')}}";
+                //04_bag
+            }
+            else if((174 <= x && x < 267)&&(321 <= y && y < 511)){
+                document.getElementById('target').src = "{{ url_for('static', filename='05_bottoms.png')}}";
+                //05_bottoms
+            }
+            else if((175 <= x && x < 277)&&(543 <= y && y < 576)){
+                document.getElementById('target').src = "{{ url_for('static', filename='06_shoes.png')}}";
+                //06_shoes
+            }
+            else{
+                document.getElementById('target').src = "{{ url_for('static', filename='01_default.png')}}";
+                //01_default
+            }
+        } ) ;
+        function a_click(){
+            document.getElementById('')
+        }
+    </script>
+</body>
+</html>
