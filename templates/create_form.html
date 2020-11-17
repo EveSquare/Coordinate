@@ -34,7 +34,7 @@
             <fieldset id="human">
                 <div class="origin-from">
                     <label for="body">body</label>
-                    <input type="button" value="+" onclick="btnclick('body')">
+                    <input type="button" value="+" onclick="btnclick('body_c')">
                     <input type="text" id="body" name="body">
                 </div>
                 <div class="comments-form">
@@ -48,7 +48,7 @@
         </form>
     </main>
     <script>
-        document.getElementById('body').style.visibility = 'hidden';
+        document.getElementById('body_c').style.visibility = 'hidden';
 
         function btnclick(name){
             const elem = document.getElementById(name);
@@ -94,14 +94,17 @@
             else if(((65 <= x && x < 122)&&(304 <= y && y <  321) || (342 <= x && x < 384)&&(301 <= y && y < 319))){
                 document.getElementById('target').src = "{{ url_for('static', filename='04_bag.png')}}";
                 //04_bag
+                document.getElementById('target-link').href = '#bag';
             }
             else if((174 <= x && x < 267)&&(321 <= y && y < 511)){
                 document.getElementById('target').src = "{{ url_for('static', filename='05_bottoms.png')}}";
                 //05_bottoms
+                document.getElementById('target-link').href = '#pants';
             }
             else if((175 <= x && x < 277)&&(543 <= y && y < 576)){
                 document.getElementById('target').src = "{{ url_for('static', filename='06_shoes.png')}}";
                 //06_shoes
+                document.getElementById('target-link').href = '#shoes';
             }
             else{
                 document.getElementById('target').src = "{{ url_for('static', filename='01_default.png')}}";
