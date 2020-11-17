@@ -63,11 +63,11 @@ def create_result():
     body_c = request.form.get("body_c",None)
 
     # Insert実行
-    def table_insert(title = "",body = "",body_c = "",pants = "",pants_c = "",shoes = "",shoes_c = "",date=dt_now):
+    def table_insert(title = "",body = "",body_c = "",pants = "",pants_c = "",shoes = "",shoes_c = "",date=dt_now,view_times = ""):
 
         #id = c.lastrowid + 1
-        round_up = [(title, body, body_c, pants, pants_c, shoes, shoes_c, date)]
-        c.executemany('''INSERT INTO articles(title, body, body_c, pants, pants_c, shoes, shoes_c, date) VALUES (?,?,?,?,?,?,?,?)''' , round_up)
+        round_up = [(title, body, body_c, pants, pants_c, shoes, shoes_c, date, view_times)]
+        c.executemany('''INSERT INTO articles(title, body, body_c, pants, pants_c, shoes, shoes_c, date, view_times) VALUES (?,?,?,?,?,?,?,?,?)''' , round_up)
 
         conn.commit()
 
@@ -203,7 +203,8 @@ if __name__ == '__main__':
                         pants_c text,
                         shoes text,
                         shoes_c text,
-                        date text)''')
+                        date text,
+                        view_times)''')
             # コネクションをクローズ
             conn.close()
     except:
