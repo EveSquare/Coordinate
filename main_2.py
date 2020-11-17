@@ -63,7 +63,7 @@ def create_result():
     body_c = request.form.get("body_c",None)
 
     # Insert実行
-    def table_insert(title = "",body = "",body_c = "",pants = "",pants_c = "",shoes = "",shoes_c = "",date=dt_now,view_times = ""):
+    def table_insert(title = "",body = "",body_c = "",pants = "",pants_c = "",shoes = "",shoes_c = "",date=dt_now,view_times = "0"):
 
         #id = c.lastrowid + 1
         round_up = [(title, body, body_c, pants, pants_c, shoes, shoes_c, date, view_times)]
@@ -100,10 +100,15 @@ def coordinate_page(id):
             result = row
     except:
         abort(404,{ 'id':id })
-    # コネクションをクローズ
+    #値が空なら404を返す
+    if result == []:
+        abort(404,{ 'id':id })
     
-    # faviconのせいで二回呼び出されている気がする
-    # print('result:',list(result))
+
+    view = 1 + int(result[9])
+    c.execute(f'update articles set view_times=? where id={id}',(str(view),))
+    conn.commit()
+    # コネクションをクローズ
     conn.close()
     return render_template('coordinate_page.html',
                             title = result,
@@ -116,10 +121,10 @@ def id_qr(id):
     #id=url
     #title
     #comment
-    base_path = "{{url_for('static', 'background_img.png')}}"
-    qr_path = "{{url_for('static', 'qr_img.png')}}"
-    font_path = "{{url_for('static', 'meiryo.ttc')}}"
-    icon_path = "{{url_for('static', 'resize-icon.png')}}"
+    base_path = "url_for('static', 'background_img.png')"
+    qr_path = "url_for('static', 'qr_img.png')"
+    font_path = "url_for('static', 'meiryo.ttc')"
+    icon_path = "url_for('static', 'resize-icon.png')"
     url_path = 'https://google.co.jp/'
 
     def generate_qrcode():
@@ -137,7 +142,7 @@ def id_qr(id):
         pos = ((img_qr_big.size[0] - icon.size[0]) // 2, (img_qr_big.size[1] - icon.size[1]) // 2)
     
         img_qr_big.paste(icon, pos)
-        img_qr_big.save("{{url_for('static', 'qr_img.png')}}")
+        img_qr_big.save("url_for('static', 'qr_img.png')")
 
 
     def insert_text():    
@@ -178,7 +183,7 @@ def id_qr(id):
         
         
         
-        img.save("{{ url_for('static', 'unique_card.png')}}")
+        img.save("url_for('static', 'unique_card.png')")
     
     
 @app.errorhandler(404)

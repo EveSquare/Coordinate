@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>トップページ</title>
+    <title>Coordinate</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css')}}">
@@ -40,7 +40,7 @@
                 </a>
                 <a href="/{{ url[3] }}" class="card-root">
                     <div class="card">
-                        <img src="../daf.png" alt="img1">
+                        <img src="{{ url_for('static', filename='2.png')}}" alt="img1">
                         <div class="card-body">
                             <p class="card-text">{{ title[3] }}</p>
                             <p class="card-text">{{ comment[3] }}</p>
@@ -49,7 +49,7 @@
                 </a>
                 <a href="/{{ url[2] }}" class="card-root">
                     <div class="card">
-                        <img src="../daf.png" alt="img1">
+                        <img src="{{ url_for('static', filename='3.png')}}" alt="img1">
                         <div class="card-body">
                             <p class="card-text">{{ title[2] }}</p>
                             <p class="card-text">{{ comment[2] }}</p>
@@ -58,7 +58,7 @@
                 </a>
                 <a href="/{{ url[1] }}" class="card-root">
                     <div class="card">
-                        <img src="../daf.png" alt="img1">
+                        <img src="{{ url_for('static', filename='4.png')}}" alt="img1">
                         <div class="card-body">
                             <p class="card-text">{{ title[1] }}</p>
                             <p class="card-text">{{ comment[1] }}</p>
@@ -67,7 +67,7 @@
                 </a>
                 <a href="/{{ url[1] }}" class="card-root">
                     <div class="card">
-                        <img src="../daf.png" alt="img1">
+                        <img src="{{ url_for('static', filename='5.png')}}" alt="img1">
                         <div class="card-body">
                             <p class="card-text">{{ title[0] }}</p>
                             <p class="card-text">{{ comment[0] }}</p>
@@ -81,7 +81,7 @@
             </div>
             <a href="/{{ url[4] }}" class="card-root">
                 <div class="card">
-                    <img src="../daf.png" alt="img1">
+                    <img src="{{ url_for('static', filename='6.png')}}" alt="img1">
                     <div class="card-body">
                         <p class="card-text">{{ title[4] }}</p>
                         <p class="card-text">{{ comment[4] }}</p>
@@ -90,7 +90,7 @@
             </a>
             <a href="/{{ url[3] }}" class="card-root">
                 <div class="card">
-                    <img src="../daf.png" alt="img1">
+                    <img src="{{ url_for('static', filename='7.png')}}" alt="img1">
                     <div class="card-body">
                         <p class="card-text">{{ title[3] }}</p>
                         <p class="card-text">{{ comment[3] }}</p>
@@ -99,7 +99,7 @@
             </a>
             <a href="/{{ url[2] }}" class="card-root">
                 <div class="card">
-                    <img src="../daf.png" alt="img1">
+                    <img src="{{ url_for('static', filename='8.png')}}" alt="img1">
                     <div class="card-body">
                         <p class="card-text">{{ title[2] }}</p>
                         <p class="card-text">{{ comment[2] }}</p>
@@ -108,7 +108,7 @@
             </a>
             <a href="/{{ url[1] }}" class="card-root">
                 <div class="card">
-                    <img src="../daf.png" alt="img1">
+                    <img src="{{ url_for('static', filename='9.png')}}" alt="img1">
                     <div class="card-body">
                         <p class="card-text">{{ title[1] }}</p>
                         <p class="card-text">{{ comment[1] }}</p>
@@ -117,7 +117,7 @@
             </a>
             <a href="/{{ url[1] }}" class="card-root">
                 <div class="card">
-                    <img src="../daf.png" alt="img1">
+                    <img src="{{ url_for('static', filename='10.png')}}" alt="img1">
                     <div class="card-body">
                         <p class="card-text">{{ title[0] }}</p>
                         <p class="card-text">{{ comment[0] }}</p>
