@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, abort
 import sqlite3
 import datetime
 import os
@@ -95,16 +95,23 @@ def coordinate_page(id):
     tp_id = []
     tp_id.append(id)
     result = []
-    for row in c.execute('SELECT * FROM articles WHERE id = (?)',tuple(tp_id)):
-        result = row
+    try:
+        for row in c.execute('SELECT * FROM articles WHERE id = (?)',tuple(tp_id)):
+            result = row
+    except:
+        abort(404,{ 'id':id })
     # コネクションをクローズ
     
-    #TODO faviconのせいで二回呼び出されている気がする
-    print('result:',list(result))
+    # faviconのせいで二回呼び出されている気がする
+    # print('result:',list(result))
     conn.close()
     return render_template('coordinate_page.html',
                             title = result,
                             result = result)
+@app.errorhandler(404)
+def error_handler(error):
+    return render_template('error.html',
+                            id = id)
 
 if __name__ == '__main__':
     try:
