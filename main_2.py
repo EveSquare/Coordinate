@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for, abort
 import sqlite3
 import datetime
 import os
-import random
 
 db_path = './coordinate.db'
 
@@ -43,8 +42,7 @@ def top_page():
     return render_template('top_page.html',
                             url = id_list,
                             title=title_list,
-                            comment=body_c_list,
-                            img_path= 1)
+                            comment=body_c_list)
 
 @app.route('/create')
 def create():

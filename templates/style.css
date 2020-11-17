@@ -89,3 +89,11 @@ button{
     left: 45%;
     
 }
+
+#jumbotron{
+    color: #fff;
+}
+
+#error-message{
+    margin: 85px 15px;
+}
