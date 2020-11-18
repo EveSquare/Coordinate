@@ -4,6 +4,7 @@ import datetime
 import os
 from PIL import ImageFont, Image, ImageDraw
 import qrcode
+import time
 
 db_path = './coordinate.db'
 
@@ -114,17 +115,20 @@ def coordinate_page(id):
                             title = result,
                             result = result)
 
-@app.route('/<id>/qr')
-def id_qr(id):
+@app.route('/qr', methods=["POST"])
+def id_qr():
+
+
+    id = request.form.get("id",None)
 
     #user_input--
     #id=url
     #title
     #comment
-    base_path = "url_for('static', 'background_img.png')"
-    qr_path = "url_for('static', 'qr_img.png')"
-    font_path = "url_for('static', 'meiryo.ttc')"
-    icon_path = "url_for('static', 'resize-icon.png')"
+    base_path = "./static/background_img.png"
+    qr_path = "./static/qr_img.png"
+    font_path = "./static/meiryo.ttc"
+    icon_path = "./static/resize-icon.png"
     url_path = 'https://google.co.jp/'
 
     def generate_qrcode():
@@ -142,7 +146,7 @@ def id_qr(id):
         pos = ((img_qr_big.size[0] - icon.size[0]) // 2, (img_qr_big.size[1] - icon.size[1]) // 2)
     
         img_qr_big.paste(icon, pos)
-        img_qr_big.save("url_for('static', 'qr_img.png')")
+        img_qr_big.save('./static/qr_img.png')
 
 
     def insert_text():    
@@ -183,7 +187,12 @@ def id_qr(id):
         
         
         
-        img.save("url_for('static', 'unique_card.png')")
+        img.save("./static/unique_card.png")
+
+    generate_qrcode()
+    insert_text()
+    time.sleep(1)
+    return render_template('qr_page.html')
     
     
 @app.errorhandler(404)
