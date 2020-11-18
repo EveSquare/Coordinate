@@ -22,7 +22,7 @@
         <!-- <img src="{{ url_for('static', filename='unique_card.png') }}" alt="qr"> -->
     </p>
     <div class="wrap">
-        <img id="img1" class="img-thumbnail" src="../static/unique_card.png" alt="qr">
+        <img id="img1" class="img-thumbnail" src="{{ url_for('static', filename='unique_card.png')}}" alt="qr">
         <div class="sns-area">
             <a href="" id="tw-btn"><i id="icon1" class="fab fa-twitter fa-3x"></i></a>
             <a href="" id="fb-btn"><i id="icon2" class="fab fa-facebook-square fa-3x"></i></a>
@@ -34,16 +34,19 @@
         <input type="text" id="comment" value="{{ result[3] }}">
     </div>
     <script>
-        var url = location.href;
-        var title = document.getElementById("title").value;
-        var comment = document.getElementById("comment").value;
-        var twitter = document.getElementById("tw-btn").value;
-        var fb = document.getElementById("fb-btn").value;
-        var line = document.getElementById("li-btn").value;
+        window.onload = function () {
+            var url = location.href;
+            var title = document.getElementById("title").value;
+            var comment = document.getElementById("comment").value;
+            var twitter = document.getElementById("tw-btn").value;
+            var fb = document.getElementById("fb-btn").value;
+            var line = document.getElementById("li-btn").value;
+            
+            twitter.href = "https://twitter.com/share?text="+title+"&url="+url;
+            fb.href = "http://www.facebook.com/share.php?u="+url;
+            line.href = "https://line.me/R/msg/text/?"+title+url;            
+        };
 
-        twitter.href = "https://twitter.com/share?text="+title+"&url="+url;
-        fb.href = "http://www.facebook.com/share.php?u="+url;
-        line.href = "https://line.me/R/msg/text/?"+title+url;
     </script>
 </body>
 </html>

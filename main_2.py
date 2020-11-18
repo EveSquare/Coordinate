@@ -160,7 +160,7 @@ def id_qr():
         img_qr_big.save('./static/qr_img.png')
 
 
-    def insert_text():    
+    def insert_text(title,comment):    
         #読み込み
         base_img = Image.open(base_path).copy()
         qr_img = Image.open(qr_path).copy()
@@ -181,15 +181,14 @@ def id_qr():
         
             return img
         
-        text = "This is Title"
+        text = title
         font_size = 60
         font_color = (255, 255, 255)
         height = 200
         width = 615
         img = add_text_to_image(base_img, text, font_path, font_size, font_color, height, width)
         
-        text = """This space is some 
-        comments"""
+        text = comment
         font_size = 50
         font_color = (255, 255, 255)
         height = 330
@@ -200,9 +199,11 @@ def id_qr():
         
         img.save("./static/unique_card.png")
 
-    generate_qrcode()
-    insert_text()
-    time.sleep(1)
+    
+    # DBに接続する。なければDBを作成する。
+    conn = sqlite3.connect(db_path)
+    # カーソルを取得する
+    c = conn.cursor()
 
     def partial_acquisition(id):#1:title,3:body_c
         #idで検索
@@ -210,6 +211,11 @@ def id_qr():
             return result
 
     result = partial_acquisition(id)
+    conn.close()    
+
+    generate_qrcode()
+    insert_text(result[1],result[3])
+    time.sleep(2)
 
     return render_template('qr_page.html',
                             result=result)
