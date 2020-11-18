@@ -32,17 +32,25 @@ def top_page():
 
         return result
     
+    def view_times_sort():
+        for contents in c.execute('SELECT * FROM articles ORDER BY view_times DESC'):
+            popular.append(contents)
+    
     title_list = []
     body_c_list = []
     id_list = []
+    popular = []
     for i in new_list:
         id_list.append(i)
         title_list.append(partial_acquisition(i,1))
         body_c_list.append(partial_acquisition(i,3))
 
+    view_times_sort()
+
     conn.close()
 
     return render_template('top_page.html',
+                            popular=popular,
                             url = id_list,
                             title=title_list,
                             comment=body_c_list)
@@ -118,7 +126,10 @@ def coordinate_page(id):
 @app.route('/qr', methods=["POST"])
 def id_qr():
 
-
+    if not request.form.get("id"):
+        id = request.form.get("id",None)
+        abort(404,{ 'id':id })
+        
     id = request.form.get("id",None)
 
     #user_input--
@@ -192,7 +203,16 @@ def id_qr():
     generate_qrcode()
     insert_text()
     time.sleep(1)
-    return render_template('qr_page.html')
+
+    def partial_acquisition(id):#1:title,3:body_c
+        #idで検索
+        for result in c.execute(f'SELECT * FROM articles WHERE id = {id}'):
+            return result
+
+    result = partial_acquisition(id)
+
+    return render_template('qr_page.html',
+                            result=result)
     
     
 @app.errorhandler(404)

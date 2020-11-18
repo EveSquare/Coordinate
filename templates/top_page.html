@@ -29,48 +29,53 @@
                 <!-- <span class="badge badge-primary">Popular</span> -->
             </div>
             <div>
-                <a href="/{{ url[4] }}" class="card-root">
+                <a href="/{{ popular[0][0] }}" class="card-root">
                     <div class="card">
                         <img src="{{ url_for('static', filename='1.png')}}" alt="img1">
                         <div class="card-body">
-                            <p class="card-text">{{ title[4] }}</p>
-                            <p class="card-text">{{ comment[4] }}</p>
+                            <p class="card-text">{{ popular[0][1] }}</p>
+                            <p class="card-text">{{ popular[0][3] }}</p>
+                            <p class="card-text">{{ popular[0][9] }}View</p>
                         </div>
                     </div>
                 </a>
-                <a href="/{{ url[3] }}" class="card-root">
+                <a href="/{{ popular[1][0] }}" class="card-root">
                     <div class="card">
                         <img src="{{ url_for('static', filename='2.png')}}" alt="img1">
                         <div class="card-body">
-                            <p class="card-text">{{ title[3] }}</p>
-                            <p class="card-text">{{ comment[3] }}</p>
+                            <p class="card-text">{{ popular[1][1] }}</p>
+                            <p class="card-text">{{ popular[1][3] }}</p>
+                            <p class="card-text">{{ popular[1][9] }}View</p>
                         </div>
                     </div>
                 </a>
-                <a href="/{{ url[2] }}" class="card-root">
+                <a href="/{{ popular[2][0] }}" class="card-root">
                     <div class="card">
                         <img src="{{ url_for('static', filename='3.png')}}" alt="img1">
                         <div class="card-body">
-                            <p class="card-text">{{ title[2] }}</p>
-                            <p class="card-text">{{ comment[2] }}</p>
+                            <p class="card-text">{{ popular[2][1] }}</p>
+                            <p class="card-text">{{ popular[2][3] }}</p>
+                            <p class="card-text">{{ popular[2][9] }}View</p>
                         </div>
                     </div>
                 </a>
-                <a href="/{{ url[1] }}" class="card-root">
+                <a href="/{{ popular[3][0] }}" class="card-root">
                     <div class="card">
                         <img src="{{ url_for('static', filename='4.png')}}" alt="img1">
                         <div class="card-body">
-                            <p class="card-text">{{ title[1] }}</p>
-                            <p class="card-text">{{ comment[1] }}</p>
+                            <p class="card-text">{{ popular[3][1] }}</p>
+                            <p class="card-text">{{ popular[3][3] }}</p>
+                            <p class="card-text">{{ popular[3][9] }}View</p>
                         </div>
                     </div>
                 </a>
-                <a href="/{{ url[1] }}" class="card-root">
+                <a href="/{{ popular[4][0] }}" class="card-root">
                     <div class="card">
                         <img src="{{ url_for('static', filename='5.png')}}" alt="img1">
                         <div class="card-body">
-                            <p class="card-text">{{ title[0] }}</p>
-                            <p class="card-text">{{ comment[0] }}</p>
+                            <p class="card-text">{{ popular[4][1] }}</p>
+                            <p class="card-text">{{ popular[4][3] }}</p>
+                            <p class="card-text">{{ popular[4][9] }}View</p>
                         </div>
                     </div>
                 </a>
@@ -115,7 +120,7 @@
                     </div>
                 </div>
             </a>
-            <a href="/{{ url[1] }}" class="card-root">
+            <a href="/{{ url[0] }}" class="card-root">
                 <div class="card">
                     <img src="{{ url_for('static', filename='10.png')}}" alt="img1">
                     <div class="card-body">
