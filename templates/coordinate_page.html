@@ -18,6 +18,23 @@
         </nav>
     </div>
     <main>
+        <ul>
+        {% for i in range(2,10) %}
+            {% if i != '' %}
+                {% if i == 2 %}
+                {% endif %}
+                {% if i == 4 %}
+                {% endif %}
+                {% if i == 6 %}
+                {% endif %}
+                <li>{{ result[i] }}</li>
+                {% if i == 9 %}
+                <span>Views</span>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        </ul>
+
         <h1 class="title">{{ result[1] }}</h1>
         <h2 class="body">{{ result[2] }}</h2>
         <p class="body_c">{{ result[3] }}</p>

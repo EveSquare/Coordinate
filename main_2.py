@@ -70,6 +70,10 @@ def create_result():
     title = request.form.get("title",None)
     body = request.form.get("body",None)
     body_c = request.form.get("body_c",None)
+    pants = request.form.get("pants",None)
+    pants_c = request.form.get("pants_c",None)
+    shoes = request.form.get("shoes",None)
+    shoes_c = request.form.get("shoes_c",None)
 
     # Insert実行
     def table_insert(title = "",body = "",body_c = "",pants = "",pants_c = "",shoes = "",shoes_c = "",date=dt_now,view_times = "0"):
@@ -82,7 +86,7 @@ def create_result():
 
     # 現在時刻を変数に格納
     date = dt_now
-    table_insert(title=title,body=body,body_c=body_c,date=date)
+    table_insert(title=title,body=body,body_c=body_c,pants=pants,pants_c=pants_c,shoes=shoes,shoes_c=shoes_c,date=date)
 
     for row in c.execute(f'SELECT * FROM articles WHERE title = "{title}" and date = "{date}"'):
         url = row[0]
@@ -120,7 +124,6 @@ def coordinate_page(id):
     # コネクションをクローズ
     conn.close()
     return render_template('coordinate_page.html',
-                            title = result,
                             result = result)
 
 @app.route('/qr', methods=["POST"])
@@ -140,7 +143,7 @@ def id_qr():
     qr_path = "./static/qr_img.png"
     font_path = "./static/meiryo.ttc"
     icon_path = "./static/resize-icon.png"
-    url_path = 'https://google.co.jp/'
+    url_path = f'http://127.0.0.1:5000/{id}'
 
     def generate_qrcode():
         icon = Image.open(icon_path)
@@ -190,6 +193,8 @@ def id_qr():
         
         if len(comment) >= 10:
             comment = f'{comment[:10]}\n{comment[10:]}'
+            if len(comment) >= 20:
+                comment = f'{comment[:20]}\n{comment[20:]}'
         text = comment
         font_size = 50
         font_color = (255, 255, 255)

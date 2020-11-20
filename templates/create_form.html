@@ -33,12 +33,24 @@
             </div>
             <fieldset id="human">
                 <div class="origin-from">
-                    <label for="body">body</label>
-                    <input type="button" value="+" onclick="btnclick('body_c')">
-                    <input type="text" id="body" name="body">
-                </div>
-                <div class="comments-form">
-                    <input type="text" id="body_c" name="body_c" placeholder="comment">
+                    <div class="body">
+                        <label for="body">body</label>
+                        <input type="button" value="+" onclick="btnclick('body_c')">
+                        <input type="text" id="body" name="body">
+                        <input type="text" id="body_c" name="body_c" placeholder="comment">
+                    </div>
+                    <div class="pants">
+                        <label for="body">pants</label>
+                        <input type="button" value="+" onclick="btnclick('pants_c')">
+                        <input type="text" id="pants" name="pants">
+                        <input type="text" id="pants_c" name="pants_c" placeholder="comment">
+                    </div>
+                    <div class="shoes">
+                        <label for="body">shoes</label>
+                        <input type="button" value="+" onclick="btnclick('shoes_c')">
+                        <input type="text" id="shoes" name="shoes">
+                        <input type="text" id="shoes_c" name="shoes_c" placeholder="comment">
+                    </div>
                 </div>
             </fieldset>
             <div class="buttons">
@@ -49,6 +61,8 @@
     </main>
     <script>
         document.getElementById('body_c').style.visibility = 'hidden';
+        document.getElementById('pants_c').style.visibility = 'hidden';
+        document.getElementById('shoes_c').style.visibility = 'hidden';
 
         function btnclick(name){
             const elem = document.getElementById(name);
@@ -81,21 +95,21 @@
     	    y = clickY - positionY ;
             //console.log('x:'+x+'y:'+y);
 
-            if((200 <= x && x < 275)&&(66 <= y && y < 141)){
-                document.getElementById('target').src = "{{ url_for('static', filename='02_hairaccessory.png')}}";
-                //02_hairaccessory
-                document.getElementById('target-link').href = '#hairaccessory';
-            }
-            else if((123 <= x && x < 336) && (170 <= y && y < 300)){
+            // if((200 <= x && x < 275)&&(66 <= y && y < 141)){
+            //     document.getElementById('target').src = "{{ url_for('static', filename='02_hairaccessory.png')}}";
+            //     //02_hairaccessory
+            //     document.getElementById('target-link').href = '#hairaccessory';
+            // }
+            if((123 <= x && x < 336) && (170 <= y && y < 300)){
                 document.getElementById('target').src = "{{ url_for('static', filename='03_tops.png')}}";
                 //03_tops
                 document.getElementById('target-link').href = '#body';
             }
-            else if(((65 <= x && x < 122)&&(304 <= y && y <  321) || (342 <= x && x < 384)&&(301 <= y && y < 319))){
-                document.getElementById('target').src = "{{ url_for('static', filename='04_bag.png')}}";
-                //04_bag
-                document.getElementById('target-link').href = '#bag';
-            }
+            // else if(((65 <= x && x < 122)&&(304 <= y && y <  321) || (342 <= x && x < 384)&&(301 <= y && y < 319))){
+            //     document.getElementById('target').src = "{{ url_for('static', filename='04_bag.png')}}";
+            //     //04_bag
+            //     document.getElementById('target-link').href = '#bag';
+            // }
             else if((174 <= x && x < 267)&&(321 <= y && y < 511)){
                 document.getElementById('target').src = "{{ url_for('static', filename='05_bottoms.png')}}";
                 //05_bottoms
