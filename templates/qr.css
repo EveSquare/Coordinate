@@ -55,7 +55,9 @@
 }
 
 .form-none{
-    display: none;
+    position: absolute;
+    top: -9999px;  
+    left: -9999px;
 }
 
 @media(max-width: 1760px){

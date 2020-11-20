@@ -1,0 +1,51 @@
+.header nav{
+    height: 70px;
+    display: inline;
+}
+
+.header img{
+    margin-top: 6px;
+    height: 40px;
+    width: 40px;
+}
+
+.header a{
+    padding-top: 8px;
+    margin-left: 10px;
+    text-decoration: none;
+    font-size: 17pt;
+    position: absolute;
+}
+
+.header .create-link{
+    position: absolute;
+    left: 50%;
+}
+
+.header span{
+    color: rgb(43, 174, 226);
+}
+
+main{
+    margin-top: 100px;
+}
+
+#id{
+    position: absolute;
+    top: -9999px;  
+    left: -9999px;
+}
+
+.qr-btn{
+    background-color: rgb(43, 174, 226);
+    color: aliceblue;
+    height: 60px;
+    width: 210px;
+    font-size: 15pt;
+    border: 5px;
+    border-radius: 8px;
+}
+
+.qr-btn:hover{
+    background-color: rgb(33, 139, 181);
+}

@@ -6,14 +6,26 @@
     <title>{{ result[1] }}</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css')}}">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='coordinate_page.css')}}">
+    <link rel="stylesheet" href="coordinate_page.css">
 </head>
 <body>
-    <h1>{{ result }}</h1>
-    <form action="/qr" method="POST">
-        <input type="text" name="id" id="id" value="{{ result[0] }}">
-        <button type="submit">QRコード画像を作成</button>
-    </form>
+    <div class="header">
+        <nav class="navbar fixed-top navbar-dark bg-dark">
+            <img src="../static/Logo-icon.png" alt="Logo">
+            <a href="/">C<span class="logo-title">oo</span>rdinate</a>
+            <a href="/create" class="create-link">+</a> 
+        </nav>
+    </div>
+    <main>
+        <h1 class="title">{{ result[1] }}</h1>
+        <h2 class="body">{{ result[2] }}</h2>
+        <p class="body_c">{{ result[3] }}</p>
+
+        <form action="/qr" method="POST">
+            <input type="text" name="id" id="id" value="{{ result[0] }}">
+            <button type="submit" class="qr-btn">QRコード画像を作成</button>
+        </form>
+    </main>
 </body>
 </html>

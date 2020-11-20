@@ -188,6 +188,8 @@ def id_qr():
         width = 615
         img = add_text_to_image(base_img, text, font_path, font_size, font_color, height, width)
         
+        if len(comment) >= 10:
+            comment = f'{comment[:10]}\n{comment[10:]}'
         text = comment
         font_size = 50
         font_color = (255, 255, 255)
